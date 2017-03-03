@@ -17,7 +17,7 @@
 													  		01.03.2017
 */
 
-#include <a_samp>
+#include <a_samp> // РўР•РЎРў
 #include <core>
 #include <float>
 
@@ -28,14 +28,14 @@
 
 // #define MAX_CHAT_MESSAGE 146
 
-//======= КООРДИНАТЫ РАНДОМНОГО СПАВНА =========================================
+//======= ГЉГЋГЋГђГ„Г€ГЌГЂГ’Г› ГђГЂГЌГ„ГЋГЊГЌГЋГѓГЋ Г‘ГЏГЂГ‚ГЌГЂ =========================================
 new Float:gRandomSpawns[3][4] = {
 {-1346.1572,491.9534,11.2027,1.4121},
 {-1348.1433,495.3761,11.1953,182.3520},
 {-1343.3337,496.5833,11.2027,84.9045}
 };
 
-//======= КООРДИНАТЫ РАНДОМНОГО СПАВНА DM & Derby ==============================
+//======= ГЉГЋГЋГђГ„Г€ГЌГЂГ’Г› ГђГЂГЌГ„ГЋГЊГЌГЋГѓГЋ Г‘ГЏГЂГ‚ГЌГЂ DM & Derby ==============================
 new Float:gRandomDM1Spawns[6][4] = {
 {-2222.0735,403.9738,59.5489,268.6603},
 {-2222.6123,379.8876,59.5489,268.1061},
@@ -70,15 +70,15 @@ new Float:gRandomDM4Spawns[4][4] = {
 {-1517.5829,993.0541,1037.6272,269.2186}
 };
 
-//======= СЧЕТЧИК ТРАНСПОРТА ===================================================
+//======= Г‘Г—Г…Г’Г—Г€ГЉ Г’ГђГЂГЌГ‘ГЏГЋГђГ’ГЂ ===================================================
 new CreatedCars[100];
 new CreatedCar = 0;
 
-//======= ТЕКСТДРАВЫ ===========================================================
+//======= Г’Г…ГЉГ‘Г’Г„ГђГЂГ‚Г› ===========================================================
 new Text:txtModeName;
 new Text:txtPlayerCoord;
 
-//======= ФОРВАРДЫ =============================================================
+//======= Г”ГЋГђГ‚ГЂГђГ„Г› =============================================================
 forward UpdateCoords();
 forward SpawnCars();
 forward pRandomSpawns(playerid); // Main random spawns
@@ -104,12 +104,12 @@ main()
 
 public OnPlayerConnect(playerid)
 {
-	SendClientMessage(playerid, COLOR_YELLOWGREEN, "Успешное подключение к отладочному серверу.");
+	SendClientMessage(playerid, COLOR_YELLOWGREEN, "Г“Г±ГЇГҐГёГ­Г®ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ ГЄ Г®ГІГ«Г Г¤Г®Г·Г­Г®Г¬Гі Г±ГҐГ°ГўГҐГ°Гі.");
 	SetPlayerMapIcon(playerid, 1, -1375.2230, 469.6149, 7.1875, 8, 0, MAPICON_LOCAL);
 	PlayerPlaySound(playerid, 1055, 0.0, 0.0, 0.0);
-//======= СООБЩЕНИЕ ПРИ ПОДКЛЮЧЕНИИ ИГРОКА  ====================================
+//======= Г‘ГЋГЋГЃГ™Г…ГЌГ€Г… ГЏГђГ€ ГЏГЋГ„ГЉГ‹ГћГ—Г…ГЌГ€Г€ Г€ГѓГђГЋГЉГЂ  ====================================
 	new message[146];
-    format(message, sizeof(message), "Игрок %s [%s] подключился к серверу.", GetName(playerid), GetIp(playerid));
+    format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s [%s] ГЇГ®Г¤ГЄГ«ГѕГ·ГЁГ«Г±Гї ГЄ Г±ГҐГ°ГўГҐГ°Гі.", GetName(playerid), GetIp(playerid));
     SendClientMessageToAll(COLOR_YELLOWGREEN, message);
 	return 1;
 }
@@ -123,20 +123,20 @@ public OnPlayerCommandText(playerid, cmdtext[])
 //======= HELP =================================================================
 	if(strcmp(cmd, "/help", true ) == 0 )
 	{
-	SendClientMessage(playerid, COLOR_RED, "Команды отладочного сервера:");
-	SendClientMessage(playerid, COLOR_ORANGE, "/admins - администраторы в сети");
-	SendClientMessage(playerid, COLOR_ORANGE, "/veh - заспавнить транспорт");
-	SendClientMessage(playerid, COLOR_ORANGE, "/dveh - удалить транспорт");
-	SendClientMessage(playerid, COLOR_ORANGE, "/sveh - респавн транспорта");
-	SendClientMessage(playerid, COLOR_ORANGE, "/weap - выдать оружие");
-	SendClientMessage(playerid, COLOR_ORANGE, "/goto - телепортироваться к игроку");
-	SendClientMessage(playerid, COLOR_ORANGE, "/teleport - открыть меню телепорта");
-	SendClientMessage(playerid, COLOR_ORANGE, "/gethere - телепортировать игрока к себе");
-	SendClientMessage(playerid, COLOR_ORANGE, "/gotocar - телепортироваться к транспорту");
-	SendClientMessage(playerid, COLOR_ORANGE, "/cchat - очистить чат");
-	SendClientMessage(playerid, COLOR_ORANGE, "/pkill - убить игрока");
-	SendClientMessage(playerid, COLOR_ORANGE, "/coords - включить отображение координат");
-	SendClientMessage(playerid, COLOR_ORANGE, "/setweather - установить погоду");
+	SendClientMessage(playerid, COLOR_RED, "ГЉГ®Г¬Г Г­Г¤Г» Г®ГІГ«Г Г¤Г®Г·Г­Г®ГЈГ® Г±ГҐГ°ГўГҐГ°Г :");
+	SendClientMessage(playerid, COLOR_ORANGE, "/admins - Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°Г» Гў Г±ГҐГІГЁ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/veh - Г§Г Г±ГЇГ ГўГ­ГЁГІГј ГІГ°Г Г­Г±ГЇГ®Г°ГІ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/dveh - ГіГ¤Г Г«ГЁГІГј ГІГ°Г Г­Г±ГЇГ®Г°ГІ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/sveh - Г°ГҐГ±ГЇГ ГўГ­ ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/weap - ГўГ»Г¤Г ГІГј Г®Г°ГіГ¦ГЁГҐ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/goto - ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ ГІГјГ±Гї ГЄ ГЁГЈГ°Г®ГЄГі");
+	SendClientMessage(playerid, COLOR_ORANGE, "/teleport - Г®ГІГЄГ°Г»ГІГј Г¬ГҐГ­Гѕ ГІГҐГ«ГҐГЇГ®Г°ГІГ ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/gethere - ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ ГІГј ГЁГЈГ°Г®ГЄГ  ГЄ Г±ГҐГЎГҐ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/gotocar - ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ ГІГјГ±Гї ГЄ ГІГ°Г Г­Г±ГЇГ®Г°ГІГі");
+	SendClientMessage(playerid, COLOR_ORANGE, "/cchat - Г®Г·ГЁГ±ГІГЁГІГј Г·Г ГІ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/pkill - ГіГЎГЁГІГј ГЁГЈГ°Г®ГЄГ ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/coords - ГўГЄГ«ГѕГ·ГЁГІГј Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ");
+	SendClientMessage(playerid, COLOR_ORANGE, "/setweather - ГіГ±ГІГ Г­Г®ГўГЁГІГј ГЇГ®ГЈГ®Г¤Гі");
 	return 1;
 	}
 	
@@ -147,27 +147,27 @@ public OnPlayerCommandText(playerid, cmdtext[])
  	{
  	if (!IsPlayerAdmin(playerid))
  	{
- 	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+ 	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
  	return 1;
  	}
 	new tmp[256];
  	tmp = strtok(cmdtext, idx);
  	if(!strlen(tmp))
  	{
- 	SendClientMessage(playerid, COLOR_YELLOW, "Использование: /veh [id транспорта] [цвет 1] [цвет 2].");
+ 	SendClientMessage(playerid, COLOR_YELLOW, "Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ: /veh [id ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ] [Г¶ГўГҐГІ 1] [Г¶ГўГҐГІ 2].");
  	return 1;
  	}
  	new car;
  	car = strval(tmp);
- 	if(car < 400 || car > 611) { SendClientMessage(playerid, COLOR_RED, "Ошибка: Неверный ID транспорта. Используйте значение от 400 до 611."); return 1; }
+ 	if(car < 400 || car > 611) { SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г»Г© ID ГІГ°Г Г­Г±ГЇГ®Г°ГІГ . Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г®ГІ 400 Г¤Г® 611."); return 1; }
 	tmp = strtok(cmdtext, idx);
  	new color1;
  	color1 = strval(tmp);
- 	if(color1 < 0 || color1 > 255) { SendClientMessage(playerid, COLOR_RED, "Ошибка: Неверный цвет транспорта. Используйте значение от 0 до 255."); return 1; }
+ 	if(color1 < 0 || color1 > 255) { SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г»Г© Г¶ГўГҐГІ ГІГ°Г Г­Г±ГЇГ®Г°ГІГ . Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г®ГІ 0 Г¤Г® 255."); return 1; }
  	tmp = strtok(cmdtext, idx);
  	new color2;
  	color2 = strval(tmp);
- 	if(color2 < 0 || color2 > 255) { SendClientMessage(playerid, COLOR_RED, "Ошибка: Неверный цвет транспорта. Используйте значение от 0 до 255."); return 1; }
+ 	if(color2 < 0 || color2 > 255) { SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г»Г© Г¶ГўГҐГІ ГІГ°Г Г­Г±ГЇГ®Г°ГІГ . Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г®ГІ 0 Г¤Г® 255."); return 1; }
 	if(!strlen(tmp)) { color1 = random(255); color2 = random(255); }
 	new Float:X,Float:Y,Float:Z;
  	GetPlayerPos(playerid, X,Y,Z);
@@ -177,10 +177,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
  	CreatedCar ++;
  	LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
 	new message1[146];
- 	format(message1, sizeof(message1), "Транспорт создан: ID %d Порядковый номер %d.", car, carid);
+ 	format(message1, sizeof(message1), "Г’Г°Г Г­Г±ГЇГ®Г°ГІ Г±Г®Г§Г¤Г Г­: ID %d ГЏГ®Г°ГїГ¤ГЄГ®ГўГ»Г© Г­Г®Г¬ГҐГ° %d.", car, carid);
  	SendClientMessage(playerid, COLOR_YELLOW, message1);
 	new message2[146];
- 	format(message2, sizeof(message2), "Администратор %s создал транспорт: ID %d Порядковый номер %d.", GetName(playerid), car, carid);
+ 	format(message2, sizeof(message2), "ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г° %s Г±Г®Г§Г¤Г Г« ГІГ°Г Г­Г±ГЇГ®Г°ГІ: ID %d ГЏГ®Г°ГїГ¤ГЄГ®ГўГ»Г© Г­Г®Г¬ГҐГ° %d.", GetName(playerid), car, carid);
  	SendClientMessageToAll(COLOR_RED, message2);
  	}
  	return 1;
@@ -193,24 +193,24 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 	if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
 	new tmp[256];
  	tmp = strtok(cmdtext, idx);
  	if(!strlen(tmp))
  	{
- 	SendClientMessage(playerid, COLOR_YELLOW, "Использование: /dveh [порядковый номер транспорта].");
+ 	SendClientMessage(playerid, COLOR_YELLOW, "Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ: /dveh [ГЇГ®Г°ГїГ¤ГЄГ®ГўГ»Г© Г­Г®Г¬ГҐГ° ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ].");
  	return 1;
  	}
 	new dvehnum;
 	dvehnum = strval(tmp);
 	new dvehid;
 	dvehid = GetVehicleModel(strval(tmp));
-    if(dvehid == 0) { SendClientMessage(playerid, COLOR_RED, "Ошибка: Неверный порядковый номер транспорта."); return 1; }
-	SendClientMessage(playerid, COLOR_YELLOW, "Транспорт удален.");
+    if(dvehid == 0) { SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г»Г© ГЇГ®Г°ГїГ¤ГЄГ®ГўГ»Г© Г­Г®Г¬ГҐГ° ГІГ°Г Г­Г±ГЇГ®Г°ГІГ ."); return 1; }
+	SendClientMessage(playerid, COLOR_YELLOW, "Г’Г°Г Г­Г±ГЇГ®Г°ГІ ГіГ¤Г Г«ГҐГ­.");
 	new message[146];
- 	format(message, sizeof(message), "Администратор %s уничтожил транспорт: ID %d Порядковый номер %d.", GetName(playerid), dvehid, dvehnum);
+ 	format(message, sizeof(message), "ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г° %s ГіГ­ГЁГ·ГІГ®Г¦ГЁГ« ГІГ°Г Г­Г±ГЇГ®Г°ГІ: ID %d ГЏГ®Г°ГїГ¤ГЄГ®ГўГ»Г© Г­Г®Г¬ГҐГ° %d.", GetName(playerid), dvehid, dvehnum);
  	SendClientMessageToAll(COLOR_RED, message);
   	DestroyVehicle(strval(tmp));
 	}
@@ -224,10 +224,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 	if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
-	SendClientMessage(playerid, COLOR_YELLOW, "Транспорт зареспавнен.");
+	SendClientMessage(playerid, COLOR_YELLOW, "Г’Г°Г Г­Г±ГЇГ®Г°ГІ Г§Г Г°ГҐГ±ГЇГ ГўГ­ГҐГ­.");
 	for(new i = 0; i < sizeof(CreatedCars); i++)
 	{
  	if(i != 0)
@@ -237,7 +237,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
  	}
 	SpawnCars();
 	new message[146];
- 	format(message, sizeof(message), "Администратор %s зареспавнил весь транспорт.", GetName(playerid));
+ 	format(message, sizeof(message), "ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г° %s Г§Г Г°ГҐГ±ГЇГ ГўГ­ГЁГ« ГўГҐГ±Гј ГІГ°Г Г­Г±ГЇГ®Г°ГІ.", GetName(playerid));
  	SendClientMessageToAll(COLOR_RED, message);
  	}
 	return 1;
@@ -250,19 +250,19 @@ public OnPlayerCommandText(playerid, cmdtext[])
  	{
  	if (!IsPlayerAdmin(playerid))
  	{
- 	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+ 	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
  	return 1;
  	}
 	new tmp[256];
  	tmp = strtok(cmdtext, idx);
  	if(!strlen(tmp))
  	{
- 	SendClientMessage(playerid, COLOR_YELLOW, "Использование: /weap [id оружия] [патроны].");
+ 	SendClientMessage(playerid, COLOR_YELLOW, "Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ: /weap [id Г®Г°ГіГ¦ГЁГї] [ГЇГ ГІГ°Г®Г­Г»].");
  	return 1;
  	}
  	new weaponid;
  	weaponid = strval(tmp);
- 	if(weaponid < 0 || weaponid > 46) { SendClientMessage(playerid, COLOR_RED, "Ошибка: Неверный ID оружия. Используйте значение от 0 до 46."); return 1; }
+ 	if(weaponid < 0 || weaponid > 46) { SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г»Г© ID Г®Г°ГіГ¦ГЁГї. Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г®ГІ 0 Г¤Г® 46."); return 1; }
 	tmp = strtok(cmdtext, idx);
  	if(!strlen(tmp))
  	{
@@ -270,17 +270,17 @@ public OnPlayerCommandText(playerid, cmdtext[])
  	ammo = 1;
  	GivePlayerWeapon(playerid, weaponid, ammo);
 	new message1[146];
- 	format(message1, sizeof(message1), "Оружие выдано: ID %d Патроны %d.", weaponid, ammo);
+ 	format(message1, sizeof(message1), "ГЋГ°ГіГ¦ГЁГҐ ГўГ»Г¤Г Г­Г®: ID %d ГЏГ ГІГ°Г®Г­Г» %d.", weaponid, ammo);
  	SendClientMessage(playerid, COLOR_YELLOW, message1);
  	return 1;
  	} else {
  	new ammo;
  	ammo = strval(tmp);
- 	if(ammo < 0 || ammo > 9999) { SendClientMessage(playerid, COLOR_RED, "Ошибка: Неверное количество патронов. Используйте значение от 0 до 9999."); return 1; }
+ 	if(ammo < 0 || ammo > 9999) { SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ ГІГ°Г®Г­Г®Гў. Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г®ГІ 0 Г¤Г® 9999."); return 1; }
  	tmp = strtok(cmdtext, idx);
  	GivePlayerWeapon(playerid, weaponid, ammo);
 	new message2[128];
- 	format(message2, sizeof(message2), "Оружие выдано: ID %d Патроны %d.", weaponid, ammo);
+ 	format(message2, sizeof(message2), "ГЋГ°ГіГ¦ГЁГҐ ГўГ»Г¤Г Г­Г®: ID %d ГЏГ ГІГ°Г®Г­Г» %d.", weaponid, ammo);
  	SendClientMessage(playerid, COLOR_YELLOW, message2);
  	}
  	}
@@ -292,20 +292,20 @@ public OnPlayerCommandText(playerid, cmdtext[])
     {
     if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
 	new tmp[256];
     tmp = strtok(cmdtext, idx);
-    if (!strlen(tmp)) return SendClientMessage(playerid, COLOR_YELLOW, "Использование: /goto [id игрока].");
+    if (!strlen(tmp)) return SendClientMessage(playerid, COLOR_YELLOW, "Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ: /goto [id ГЁГЈГ°Г®ГЄГ ].");
     new giveplayerid;
     giveplayerid = strval(tmp);
-    if (!IsPlayerConnected(giveplayerid)) return SendClientMessage(playerid, COLOR_RED, "Ошибка: Игрок не найден.");
+    if (!IsPlayerConnected(giveplayerid)) return SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : Г€ГЈГ°Г®ГЄ Г­ГҐ Г­Г Г©Г¤ГҐГ­.");
     new Float:x, Float:y, Float:z;
     GetPlayerPos(giveplayerid, x, y, z);
     SetPlayerInterior(playerid, GetPlayerInterior(giveplayerid));
     SetPlayerVirtualWorld(playerid, GetPlayerVirtualWorld(giveplayerid));
-    SendClientMessage(playerid, COLOR_YELLOW, "Вы были успешно телепортированы.");
+    SendClientMessage(playerid, COLOR_YELLOW, "Г‚Г» ГЎГ»Г«ГЁ ГіГ±ГЇГҐГёГ­Г® ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г».");
     if (IsPlayerInAnyVehicle(playerid))
     {
  	LinkVehicleToInterior(GetPlayerVehicleID(playerid), GetPlayerInterior(giveplayerid));
@@ -321,18 +321,18 @@ public OnPlayerCommandText(playerid, cmdtext[])
     {
     if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
 	new tmp[256];
     tmp = strtok(cmdtext, idx);
-    if (!strlen(tmp)) return SendClientMessage(playerid, COLOR_YELLOW, "Использование: /gotocar [порядковый номер].");
+    if (!strlen(tmp)) return SendClientMessage(playerid, COLOR_YELLOW, "Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ: /gotocar [ГЇГ®Г°ГїГ¤ГЄГ®ГўГ»Г© Г­Г®Г¬ГҐГ°].");
     new gid = strval(tmp);
     new Float:x, Float:y, Float:z;
     GetVehiclePos(gid, x, y, z);
-    if (x == 0.0 && y == 0.0 && z == 0.0) return SendClientMessage(playerid, COLOR_RED, "Ошибка: Неверный порядковый номер транспорта.");
+    if (x == 0.0 && y == 0.0 && z == 0.0) return SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г»Г© ГЇГ®Г°ГїГ¤ГЄГ®ГўГ»Г© Г­Г®Г¬ГҐГ° ГІГ°Г Г­Г±ГЇГ®Г°ГІГ .");
     SetPlayerVirtualWorld(playerid, GetVehicleVirtualWorld(gid));
-    SendClientMessage(playerid, COLOR_YELLOW, "Вы были успешно телепортированы.");
+    SendClientMessage(playerid, COLOR_YELLOW, "Г‚Г» ГЎГ»Г«ГЁ ГіГ±ГЇГҐГёГ­Г® ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г».");
     /*new carinterior;
  	carinterior =  GetVehicleInterior(gid);
  	SetPlayerInterior(playerid, carinterior);*/
@@ -350,21 +350,21 @@ public OnPlayerCommandText(playerid, cmdtext[])
     {
     if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
 	new tmp[256];
     tmp = strtok(cmdtext, idx);
-    if (!strlen(tmp)) return SendClientMessage(playerid, COLOR_YELLOW, "Использование: /gethere [id игрока].");
+    if (!strlen(tmp)) return SendClientMessage(playerid, COLOR_YELLOW, "Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ: /gethere [id ГЁГЈГ°Г®ГЄГ ].");
     new gid = strval(tmp);
-    if (!IsPlayerConnected(gid)) return SendClientMessage(playerid, COLOR_RED, "Ошибка: Игрок не найден.");
+    if (!IsPlayerConnected(gid)) return SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : Г€ГЈГ°Г®ГЄ Г­ГҐ Г­Г Г©Г¤ГҐГ­.");
     new Float:x, Float:y, Float:z;
     GetPlayerPos(playerid, x, y, z);
 	new message1[146];
- 	format(message1, sizeof(message1), "Игрок %s успешно телепортирован.", GetName(gid));
+ 	format(message1, sizeof(message1), "Г€ГЈГ°Г®ГЄ %s ГіГ±ГЇГҐГёГ­Г® ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­.", GetName(gid));
     SendClientMessage(playerid, COLOR_YELLOW, message1);
 	new message2[146];
- 	format(message2, sizeof(message2), "Вы были телепортированы администратором %s.", GetName(playerid));
+ 	format(message2, sizeof(message2), "Г‚Г» ГЎГ»Г«ГЁ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г» Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°Г®Г¬ %s.", GetName(playerid));
  	SendClientMessage(gid, COLOR_RED, message2);
     if (IsPlayerInAnyVehicle(gid))
     {
@@ -383,10 +383,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
     {
     if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
-	ShowPlayerDialog(playerid, 1, DIALOG_STYLE_LIST, "Телепортироваться", "База\nЦентр San Fierro\nЦентр Los Santos\nЦентр Las Venturas", "Ок", "Выход");
+	ShowPlayerDialog(playerid, 1, DIALOG_STYLE_LIST, "Г’ГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ ГІГјГ±Гї", "ГЃГ Г§Г \nГ–ГҐГ­ГІГ° San Fierro\nГ–ГҐГ­ГІГ° Los Santos\nГ–ГҐГ­ГІГ° Las Venturas", "ГЋГЄ", "Г‚Г»ГµГ®Г¤");
     return true;
     }
     
@@ -395,20 +395,20 @@ public OnPlayerCommandText(playerid, cmdtext[])
     {
     if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
 	if(ShowPlayerCoord[playerid] == true)
  	{
  	ShowPlayerCoord[playerid] = false;
  	TextDrawHideForPlayer(playerid, txtPlayerCoord);
-  	SendClientMessage(playerid, COLOR_RED,"<< Отображение координат отключено");
+  	SendClientMessage(playerid, COLOR_RED,"<< ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ Г®ГІГЄГ«ГѕГ·ГҐГ­Г®");
    	}
     else if(ShowPlayerCoord[playerid] == false)
     {
     ShowPlayerCoord[playerid] = true;
     TextDrawShowForPlayer(playerid, txtPlayerCoord);
-    SendClientMessage(playerid, COLOR_RED,">> Отображение координат включено");
+    SendClientMessage(playerid, COLOR_RED,">> ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ ГўГЄГ«ГѕГ·ГҐГ­Г®");
     }
     return true;
     }
@@ -419,16 +419,16 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	if(PlayerDMZone[playerid] != 0)
  	{
  	PlayerDMZone[playerid] = 0;
-	pRandomSpawns(playerid); // Паблик на рандомный спавн
-  	SendClientMessage(playerid, COLOR_LIME, "Вы покинули зону DM.");
+	pRandomSpawns(playerid); // ГЏГ ГЎГ«ГЁГЄ Г­Г  Г°Г Г­Г¤Г®Г¬Г­Г»Г© Г±ГЇГ ГўГ­
+  	SendClientMessage(playerid, COLOR_LIME, "Г‚Г» ГЇГ®ГЄГЁГ­ГіГ«ГЁ Г§Г®Г­Гі DM.");
 	new message[146];
-    format(message, sizeof(message), "Игрок %s покинул зону DM.", GetName(playerid));
+    format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s ГЇГ®ГЄГЁГ­ГіГ« Г§Г®Г­Гі DM.", GetName(playerid));
 	SendClientMessageToAll(COLOR_LIME, message);
 	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
    	}
     else if (PlayerDMZone[playerid] == 0)
     {
-	ShowPlayerDialog(playerid, 2, DIALOG_STYLE_LIST, "Выбрать DM-зону", "DM 1\nDM 2\nDM 3\nDerby", "Ок", "Выход");
+	ShowPlayerDialog(playerid, 2, DIALOG_STYLE_LIST, "Г‚Г»ГЎГ°Г ГІГј DM-Г§Г®Г­Гі", "DM 1\nDM 2\nDM 3\nDerby", "ГЋГЄ", "Г‚Г»ГµГ®Г¤");
     }
     return true;
     }
@@ -438,10 +438,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 	if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
-	SendClientMessage(playerid, COLOR_ORANGE, "Aдминистраторы онлайн:");
+	SendClientMessage(playerid, COLOR_ORANGE, "AГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°Г» Г®Г­Г«Г Г©Г­:");
 	for(new i = 0; i < MAX_PLAYERS; i++)
 	{
 	if(IsPlayerConnected(i))
@@ -449,7 +449,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	if(IsPlayerAdmin(i))
 	{
 	new message[146];
-	format(message, sizeof(message), "Никнейм: %s | ID: %d | IP: %s", GetName(i), i, GetIp(i));
+	format(message, sizeof(message), "ГЌГЁГЄГ­ГҐГ©Г¬: %s | ID: %d | IP: %s", GetName(i), i, GetIp(i));
 	SendClientMessage(playerid, COLOR_GREENYELLOW, message);
  	}
  	}
@@ -460,7 +460,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 //======= CCHAT ================================================================
 	if(!strcmp(cmdtext,"/cchat", true))
     {
-    if(IsPlayerAdmin(playerid)) return SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+    if(IsPlayerAdmin(playerid)) return SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
    	{
     for(new i=0; i<105; i++)
     {
@@ -476,19 +476,19 @@ public OnPlayerCommandText(playerid, cmdtext[])
     {
     if(!IsPlayerAdmin(playerid))
 	{
-	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
 	return 1;
 	}
 	new tmp[256];
     tmp = strtok(cmdtext, idx);
-    if (!strlen(tmp)) return SendClientMessage(playerid, COLOR_YELLOW, "Использование: /pkill [id игрока].");
+    if (!strlen(tmp)) return SendClientMessage(playerid, COLOR_YELLOW, "Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ: /pkill [id ГЁГЈГ°Г®ГЄГ ].");
     new gid = strval(tmp);
-    if (!IsPlayerConnected(gid)) return SendClientMessage(playerid, COLOR_RED, "Ошибка: Игрок не найден.");
+    if (!IsPlayerConnected(gid)) return SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : Г€ГЈГ°Г®ГЄ Г­ГҐ Г­Г Г©Г¤ГҐГ­.");
 	new message1[146];
- 	format(message1, sizeof(message1), "Игрок %s был убит.", GetName(gid));
+ 	format(message1, sizeof(message1), "Г€ГЈГ°Г®ГЄ %s ГЎГ»Г« ГіГЎГЁГІ.", GetName(gid));
     SendClientMessage(playerid, COLOR_YELLOW, message1);
     new message2[146];
- 	format(message2, sizeof(message2), "Вы были убиты администратором %s.", GetName(playerid));
+ 	format(message2, sizeof(message2), "Г‚Г» ГЎГ»Г«ГЁ ГіГЎГЁГІГ» Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°Г®Г¬ %s.", GetName(playerid));
  	SendClientMessage(gid, COLOR_RED, message2);
     if (IsPlayerInAnyVehicle(gid))
     {
@@ -507,37 +507,37 @@ public OnPlayerCommandText(playerid, cmdtext[])
  	{
  	if (!IsPlayerAdmin(playerid))
  	{
- 	SendClientMessage(playerid, COLOR_RED, "Ошибка: Недостаточно прав доступа."); // Администратор?
+ 	SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® ГЇГ°Г Гў Г¤Г®Г±ГІГіГЇГ ."); // ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°?
  	return 1;
  	}
 	new tmp[256];
  	tmp = strtok(cmdtext, idx);
  	if(!strlen(tmp))
  	{
- 	SendClientMessage(playerid, COLOR_YELLOW, "Использование: /setweather [ид погоды]");
+ 	SendClientMessage(playerid, COLOR_YELLOW, "Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ: /setweather [ГЁГ¤ ГЇГ®ГЈГ®Г¤Г»]");
  	return 1;
  	}
  	new wid;
  	wid = strval(tmp);
- 	if(wid < 0 || wid > 1337) { SendClientMessage(playerid, COLOR_RED, "Ошибка: Неверный ID погоды. Используйте значение от 0 до 1337."); return 1; }
+ 	if(wid < 0 || wid > 1337) { SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г»Г© ID ГЇГ®ГЈГ®Г¤Г». Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г®ГІ 0 Г¤Г® 1337."); return 1; }
 	SetWeather(wid);
 	new message1[146];
- 	format(message1, sizeof(message1), "Погода изменена: ID %d.", wid);
+ 	format(message1, sizeof(message1), "ГЏГ®ГЈГ®Г¤Г  ГЁГ§Г¬ГҐГ­ГҐГ­Г : ID %d.", wid);
  	SendClientMessage(playerid, COLOR_YELLOW, message1);
 	new message2[146];
- 	format(message2, sizeof(message2), "Администратор %s изменил погоду: ID %d.", GetName(playerid), wid);
+ 	format(message2, sizeof(message2), "ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г° %s ГЁГ§Г¬ГҐГ­ГЁГ« ГЇГ®ГЈГ®Г¤Гі: ID %d.", GetName(playerid), wid);
  	SendClientMessageToAll(COLOR_RED, message2);
  	return 1;
  	}
  	
-	return SendClientMessage(playerid, COLOR_RED,"Ошибка: Неизвестная команда.");
+	return SendClientMessage(playerid, COLOR_RED,"ГЋГёГЁГЎГЄГ : ГЌГҐГЁГ§ГўГҐГ±ГІГ­Г Гї ГЄГ®Г¬Г Г­Г¤Г .");
 }
 
 public OnPlayerSpawn(playerid)
 {
 	if(PlayerDMZone[playerid] == 0)
  	{
-    pRandomSpawns(playerid); // Паблик на рандомный спавн
+    pRandomSpawns(playerid); // ГЏГ ГЎГ«ГЁГЄ Г­Г  Г°Г Г­Г¤Г®Г¬Г­Г»Г© Г±ГЇГ ГўГ­
  	}
 	else if(PlayerDMZone[playerid] == 1)
 	{
@@ -599,7 +599,7 @@ public OnGameModeInit()
 	SetTimer("UpdateCoords", 250, 1);
 	SpawnCars();
 	
-//======= НАЗВАНИЕ МОДА ========================================================
+//======= ГЌГЂГ‡Г‚ГЂГЌГ€Г… ГЊГЋГ„ГЂ ========================================================
 	txtModeName = TextDrawCreate(610.0, 58.0, "BEBUG MODE");
 	TextDrawUseBox(txtModeName, 0);
 	TextDrawFont(txtModeName, 3);
@@ -610,7 +610,7 @@ public OnGameModeInit()
     TextDrawAlignment(txtModeName, 3);
 	TextDrawLetterSize(txtModeName, 0.30,0.5);
 	
-//======= КООРДИНАТЫ ===========================================================
+//======= ГЉГЋГЋГђГ„Г€ГЌГЂГ’Г› ===========================================================
 	txtPlayerCoord = TextDrawCreate(88.5, 430.0, "0.0 0.0 0.0");
 	TextDrawUseBox(txtPlayerCoord, 0);
 	TextDrawFont(txtPlayerCoord, 3);
@@ -622,17 +622,17 @@ public OnGameModeInit()
     TextDrawSetProportional(txtPlayerCoord, 1);
 	TextDrawLetterSize(txtPlayerCoord, 0.3, 0.75);
 	
-//======= КЛАССЫ ===============================================================
+//======= ГЉГ‹ГЂГ‘Г‘Г› ===============================================================
 	AddPlayerClass(50,-1.0,-1.0,-1.0,180.0,24,400,25,400,31,9000);
 	AddPlayerClass(98,-1.0,-1.0,-1.0,180.0,24,400,25,400,31,9000);
 	AddPlayerClass(283,-1.0,-1.0,-1.0,180.0,24,400,25,400,31,9000);
 	AddPlayerClass(287,-1.0,-1.0,-1.0,180.0,24,400,25,400,31,9000);
 	AddPlayerClass(165,-1.0,-1.0,-1.0,180.0,24,400,25,400,31,9000);
 	
-//====== ОБЪЕКТЫ ===============================================================
-	CreateObject(5130,-1335.0000000,478.7999900,8.3000000,0.0000000,0.0000000,224.0000000); // Лестница СФа
-	CreateObject(1473,-1334.0000000,485.6000100,10.7000000,0.0000000,0.0000000,178.7500000); // Маленькая лестница СФа
-	CreateObject(1473,-1335.6000000,485.7000100,10.7000000,0.0000000,0.0000000,178.7480000); // Маленькая лестница СФа
+//====== ГЋГЃГљГ…ГЉГ’Г› ===============================================================
+	CreateObject(5130,-1335.0000000,478.7999900,8.3000000,0.0000000,0.0000000,224.0000000); // Г‹ГҐГ±ГІГ­ГЁГ¶Г  Г‘Г”Г 
+	CreateObject(1473,-1334.0000000,485.6000100,10.7000000,0.0000000,0.0000000,178.7500000); // ГЊГ Г«ГҐГ­ГјГЄГ Гї Г«ГҐГ±ГІГ­ГЁГ¶Г  Г‘Г”Г 
+	CreateObject(1473,-1335.6000000,485.7000100,10.7000000,0.0000000,0.0000000,178.7480000); // ГЊГ Г«ГҐГ­ГјГЄГ Гї Г«ГҐГ±ГІГ­ГЁГ¶Г  Г‘Г”Г 
 	return 1;
 }
 
@@ -641,9 +641,9 @@ public OnPlayerDisconnect(playerid, reason)
 	new message[146];
     switch(reason)
     {
-    case 0: format(message, sizeof(message), "Игрок %s покинул сервер (Соединение потеряно).", GetName(playerid));
-    case 1: format(message, sizeof(message), "Игрок %s покинул сервер (Покинул игру).", GetName(playerid));
-    case 2: format(message, sizeof(message), "Игрок %s покинул сервер (Принудительно удален).", GetName(playerid));
+    case 0: format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s ГЇГ®ГЄГЁГ­ГіГ« Г±ГҐГ°ГўГҐГ° (Г‘Г®ГҐГ¤ГЁГ­ГҐГ­ГЁГҐ ГЇГ®ГІГҐГ°ГїГ­Г®).", GetName(playerid));
+    case 1: format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s ГЇГ®ГЄГЁГ­ГіГ« Г±ГҐГ°ГўГҐГ° (ГЏГ®ГЄГЁГ­ГіГ« ГЁГЈГ°Гі).", GetName(playerid));
+    case 2: format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s ГЇГ®ГЄГЁГ­ГіГ« Г±ГҐГ°ГўГҐГ° (ГЏГ°ГЁГ­ГіГ¤ГЁГІГҐГ«ГјГ­Г® ГіГ¤Г Г«ГҐГ­).", GetName(playerid));
     }
     SendClientMessageToAll(COLOR_YELLOWGREEN, message);
     PlayerDMZone[playerid] = 0;
@@ -659,12 +659,12 @@ public OnRconLoginAttempt(ip[], password[], success)
     return 1;
 }
 
-public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ) // Телепортация для администрации
+public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ) // Г’ГҐГ«ГҐГЇГ®Г°ГІГ Г¶ГЁГї Г¤Г«Гї Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г Г¶ГЁГЁ
 {
     if(IsPlayerAdmin(playerid))
     {
     SetPlayerPosFindZ(playerid, fX, fY, fZ);
-    SendClientMessage(playerid, COLOR_YELLOW, "Вы были успешно телепортированы.");
+    SendClientMessage(playerid, COLOR_YELLOW, "Г‚Г» ГЎГ»Г«ГЁ ГіГ±ГЇГҐГёГ­Г® ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г».");
     return 1;
     }
     return 1;
@@ -686,9 +686,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	{
 	switch(listitem)
 	{
- 	case 0:// База
+ 	case 0:// ГЃГ Г§Г 
  	{
- 	SendClientMessage(playerid, COLOR_YELLOW, "Вы были успешно телепортированы.");
+ 	SendClientMessage(playerid, COLOR_YELLOW, "Г‚Г» ГЎГ»Г«ГЁ ГіГ±ГЇГҐГёГ­Г® ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г».");
  	SetPlayerInterior(playerid, 0);
     SetPlayerVirtualWorld(playerid, 0);
  	if (IsPlayerInAnyVehicle(playerid))
@@ -699,9 +699,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     SetPlayerPos(playerid, -1375.2230,469.6149,7.1875);
     return true;
  	}
- 	case 1: // ЛС
+ 	case 1: // Г‹Г‘
  	{
-  	SendClientMessage(playerid, COLOR_YELLOW, "Вы были успешно телепортированы.");
+  	SendClientMessage(playerid, COLOR_YELLOW, "Г‚Г» ГЎГ»Г«ГЁ ГіГ±ГЇГҐГёГ­Г® ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г».");
  	SetPlayerInterior(playerid, 0);
     SetPlayerVirtualWorld(playerid, 0);
    	if (IsPlayerInAnyVehicle(playerid))
@@ -712,9 +712,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     SetPlayerPos(playerid, 1475.2207,-1713.8995,14.0469);
     return true;
  	}
- 	case 2: // СФ
+ 	case 2: // Г‘Г”
  	{
- 	SendClientMessage(playerid, COLOR_YELLOW, "Вы были успешно телепортированы.");
+ 	SendClientMessage(playerid, COLOR_YELLOW, "Г‚Г» ГЎГ»Г«ГЁ ГіГ±ГЇГҐГёГ­Г® ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г».");
  	SetPlayerInterior(playerid, 0);
     SetPlayerVirtualWorld(playerid, 0);
  	if (IsPlayerInAnyVehicle(playerid))
@@ -725,9 +725,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     SetPlayerPos(playerid, -1758.0570,908.4375,24.8906);
     return true;
  	}
- 	case 3: // ЛВ
+ 	case 3: // Г‹Г‚
  	{
- 	SendClientMessage(playerid, COLOR_YELLOW, "Вы были успешно телепортированы.");
+ 	SendClientMessage(playerid, COLOR_YELLOW, "Г‚Г» ГЎГ»Г«ГЁ ГіГ±ГЇГҐГёГ­Г® ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г».");
  	SetPlayerInterior(playerid, 0);
     SetPlayerVirtualWorld(playerid, 0);
  	if (IsPlayerInAnyVehicle(playerid))
@@ -748,7 +748,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	{
  	if (IsPlayerInAnyVehicle(playerid))
     {
-    SendClientMessage(playerid, COLOR_RED, "Ошибка: Вы должны покинуть транспорт прежде чем телепортироваться в DM зону.");
+    SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : Г‚Г» Г¤Г®Г«Г¦Г­Г» ГЇГ®ГЄГЁГ­ГіГІГј ГІГ°Г Г­Г±ГЇГ®Г°ГІ ГЇГ°ГҐГ¦Г¤ГҐ Г·ГҐГ¬ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ ГІГјГ±Гї Гў DM Г§Г®Г­Гі.");
     return false;
     }
 	pRandomDM1Spawns(playerid);
@@ -756,12 +756,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	SetPlayerInterior(playerid, 0);
     SetPlayerVirtualWorld(playerid, 0);
     
-    SendClientMessage(playerid, COLOR_LIME, "Вы были телепортированы в DM зону 1.");
+    SendClientMessage(playerid, COLOR_LIME, "Г‚Г» ГЎГ»Г«ГЁ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г» Гў DM Г§Г®Г­Гі 1.");
    	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
    	PlayerDMZone[playerid] = 1;
     
 	new message[146];
-    format(message, sizeof(message), "Игрок %s зашел в DM зону 1.", GetName(playerid));
+    format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s Г§Г ГёГҐГ« Гў DM Г§Г®Г­Гі 1.", GetName(playerid));
 	SendClientMessageToAll(COLOR_LIME, message);
 	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
     return true;
@@ -770,7 +770,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	{
    	if (IsPlayerInAnyVehicle(playerid))
     {
-    SendClientMessage(playerid, COLOR_RED, "Ошибка: Вы должны покинуть транспорт прежде чем телепортироваться в DM зону.");
+    SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : Г‚Г» Г¤Г®Г«Г¦Г­Г» ГЇГ®ГЄГЁГ­ГіГІГј ГІГ°Г Г­Г±ГЇГ®Г°ГІ ГЇГ°ГҐГ¦Г¤ГҐ Г·ГҐГ¬ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ ГІГјГ±Гї Гў DM Г§Г®Г­Гі.");
     return false;
     }
     pRandomDM2Spawns(playerid);
@@ -778,12 +778,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	SetPlayerInterior(playerid, 0);
     SetPlayerVirtualWorld(playerid, 0);
 
-    SendClientMessage(playerid, COLOR_LIME, "Вы были телепортированы в DM зону 2.");
+    SendClientMessage(playerid, COLOR_LIME, "Г‚Г» ГЎГ»Г«ГЁ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г» Гў DM Г§Г®Г­Гі 2.");
    	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
    	PlayerDMZone[playerid] = 2;
    	
 	new message[146];
-    format(message, sizeof(message), "Игрок %s зашел в DM зону 2.", GetName(playerid));
+    format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s Г§Г ГёГҐГ« Гў DM Г§Г®Г­Гі 2.", GetName(playerid));
 	SendClientMessageToAll(COLOR_LIME, message);
 	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
     return true;
@@ -792,7 +792,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	{
  	if (IsPlayerInAnyVehicle(playerid))
     {
-    SendClientMessage(playerid, COLOR_RED, "Ошибка: Вы должны покинуть транспорт прежде чем телепортироваться в DM зону.");
+    SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : Г‚Г» Г¤Г®Г«Г¦Г­Г» ГЇГ®ГЄГЁГ­ГіГІГј ГІГ°Г Г­Г±ГЇГ®Г°ГІ ГЇГ°ГҐГ¦Г¤ГҐ Г·ГҐГ¬ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ ГІГјГ±Гї Гў DM Г§Г®Г­Гі.");
     return false;
     }
     pRandomDM3Spawns(playerid);
@@ -800,12 +800,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	SetPlayerInterior(playerid, 0);
     SetPlayerVirtualWorld(playerid, 0);
 
-    SendClientMessage(playerid, COLOR_LIME, "Вы были телепортированы в DM зону 3.");
+    SendClientMessage(playerid, COLOR_LIME, "Г‚Г» ГЎГ»Г«ГЁ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г» Гў DM Г§Г®Г­Гі 3.");
    	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
    	PlayerDMZone[playerid] = 3;
 
 	new message[146];
-    format(message, sizeof(message), "Игрок %s зашел в DM зону 3.", GetName(playerid));
+    format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s Г§Г ГёГҐГ« Гў DM Г§Г®Г­Гі 3.", GetName(playerid));
 	SendClientMessageToAll(COLOR_LIME, message);
 	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
     return true;
@@ -814,7 +814,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	{
  	if (IsPlayerInAnyVehicle(playerid))
     {
-    SendClientMessage(playerid, COLOR_RED, "Ошибка: Вы должны покинуть транспорт прежде чем телепортироваться в DM зону.");
+    SendClientMessage(playerid, COLOR_RED, "ГЋГёГЁГЎГЄГ : Г‚Г» Г¤Г®Г«Г¦Г­Г» ГЇГ®ГЄГЁГ­ГіГІГј ГІГ°Г Г­Г±ГЇГ®Г°ГІ ГЇГ°ГҐГ¦Г¤ГҐ Г·ГҐГ¬ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ ГІГјГ±Гї Гў DM Г§Г®Г­Гі.");
     return false;
     }
 	pRandomDM4Spawns(playerid);
@@ -822,12 +822,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
  	SetPlayerInterior(playerid, 15);
     SetPlayerVirtualWorld(playerid, 0);
 
-    SendClientMessage(playerid, COLOR_LIME, "Вы были телепортированы в Derby зону.");
+    SendClientMessage(playerid, COLOR_LIME, "Г‚Г» ГЎГ»Г«ГЁ ГІГҐГ«ГҐГЇГ®Г°ГІГЁГ°Г®ГўГ Г­Г» Гў Derby Г§Г®Г­Гі.");
    	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
    	PlayerDMZone[playerid] = 4;
    	
 	new message[146];
-    format(message, sizeof(message), "Игрок %s зашел в Derby зону.", GetName(playerid));
+    format(message, sizeof(message), "Г€ГЈГ°Г®ГЄ %s Г§Г ГёГҐГ« Гў Derby Г§Г®Г­Гі.", GetName(playerid));
 	SendClientMessageToAll(COLOR_LIME, message);
 	PlayerPlaySound(playerid, 1149, 0.0, 0.0, 0.0);
     return true;
